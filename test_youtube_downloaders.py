@@ -63,7 +63,7 @@ class TestAudioDownload(unittest.TestCase):
             mock_pafy_new.return_value = mock_video
             
             # Import the function
-            audio_module = import_module_from_file('audio-download.py')
+            audio_module = import_module_from_file('audio_download.py')
             download_audio = audio_module.download_audio
             
             # Test the function
@@ -77,7 +77,7 @@ class TestAudioDownload(unittest.TestCase):
     
     def test_download_audio_with_empty_url(self):
         """Test downloading audio with an empty URL."""
-        audio_module = import_module_from_file('audio-download.py')
+        audio_module = import_module_from_file('audio_download.py')
         download_audio = audio_module.download_audio
         
         with self.assertRaises(ValueError) as context:
@@ -87,7 +87,7 @@ class TestAudioDownload(unittest.TestCase):
     
     def test_download_audio_with_none_url(self):
         """Test downloading audio with None URL."""
-        audio_module = import_module_from_file('audio-download.py')
+        audio_module = import_module_from_file('audio_download.py')
         download_audio = audio_module.download_audio
         
         with self.assertRaises(ValueError) as context:
@@ -98,7 +98,7 @@ class TestAudioDownload(unittest.TestCase):
     def test_download_audio_with_connection_error(self):
         """Test downloading audio when connection fails."""
         with patch('pafy.new', side_effect=Exception("Connection failed")):
-            audio_module = import_module_from_file('audio-download.py')
+            audio_module = import_module_from_file('audio_download.py')
             download_audio = audio_module.download_audio
             
             with self.assertRaises(Exception) as context:
@@ -135,7 +135,7 @@ class TestVideoDownload(unittest.TestCase):
             mock_youtube.return_value = mock_yt
             
             # Import the function
-            video_module = import_module_from_file('video-download.py')
+            video_module = import_module_from_file('video_download.py')
             download_video = video_module.download_video
             
             # Test the function
@@ -162,7 +162,7 @@ class TestVideoDownload(unittest.TestCase):
             mock_youtube.return_value = mock_yt
             
             # Import the function
-            video_module = import_module_from_file('video-download.py')
+            video_module = import_module_from_file('video_download.py')
             download_video = video_module.download_video
             
             # Test the function
@@ -176,7 +176,7 @@ class TestVideoDownload(unittest.TestCase):
     
     def test_download_video_with_empty_url(self):
         """Test downloading video with an empty URL."""
-        video_module = import_module_from_file('video-download.py')
+        video_module = import_module_from_file('video_download.py')
         download_video = video_module.download_video
         
         with self.assertRaises(ValueError) as context:
@@ -186,7 +186,7 @@ class TestVideoDownload(unittest.TestCase):
     
     def test_download_video_with_none_url(self):
         """Test downloading video with None URL."""
-        video_module = import_module_from_file('video-download.py')
+        video_module = import_module_from_file('video_download.py')
         download_video = video_module.download_video
         
         with self.assertRaises(ValueError) as context:
@@ -197,7 +197,7 @@ class TestVideoDownload(unittest.TestCase):
     def test_download_video_with_connection_error(self):
         """Test downloading video when connection fails."""
         with patch('pytube.YouTube', side_effect=Exception("Connection failed")):
-            video_module = import_module_from_file('video-download.py')
+            video_module = import_module_from_file('video_download.py')
             download_video = video_module.download_video
             
             with self.assertRaises(Exception) as context:
@@ -214,7 +214,7 @@ class TestVideoDownload(unittest.TestCase):
             mock_youtube.return_value = mock_yt
             
             # Import the function
-            video_module = import_module_from_file('video-download.py')
+            video_module = import_module_from_file('video_download.py')
             download_video = video_module.download_video
             
             with self.assertRaises(Exception) as context:
@@ -228,7 +228,7 @@ class TestScriptSyntax(unittest.TestCase):
     
     def test_audio_download_syntax(self):
         """Test audio-download.py has valid syntax."""
-        with open('audio-download.py', 'r') as f:
+        with open('audio_download.py', 'r') as f:
             code = f.read()
         try:
             compile(code, 'audio-download.py', 'exec')
@@ -237,7 +237,7 @@ class TestScriptSyntax(unittest.TestCase):
     
     def test_video_download_syntax(self):
         """Test video-download.py has valid syntax."""
-        with open('video-download.py', 'r') as f:
+        with open('video_download.py', 'r') as f:
             code = f.read()
         try:
             compile(code, 'video-download.py', 'exec')
@@ -288,7 +288,7 @@ class TestUserInput(unittest.TestCase):
                 else:
                     try:
                         # Import and call the function
-                        audio_module = import_module_from_file('audio-download.py')
+                        audio_module = import_module_from_file('audio_download.py')
                         audio_module.download_audio(url)
                         print("Audio downloaded successfully")
                     except Exception as e:
@@ -345,7 +345,7 @@ class TestUserInput(unittest.TestCase):
                 else:
                     try:
                         # Import and call the function
-                        video_module = import_module_from_file('video-download.py')
+                        video_module = import_module_from_file('video_download.py')
                         video_module.download_video(LINK, SAVE_PATH)
                         print("Video downloaded successfully")
                     except Exception as e:
